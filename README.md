@@ -2,7 +2,7 @@
 
 📌 Overview
 
-	This module introduces ad-hoc polymorphism, operator overloading, and the Orthodox Canonical Form in C++.
+This module introduces ad-hoc polymorphism, operator overloading, and the Orthodox Canonical Form in C++.
 
 	You’ll learn how to:
 
