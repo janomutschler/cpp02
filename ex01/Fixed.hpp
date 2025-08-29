@@ -6,7 +6,7 @@
 /*   By: jmutschl <jmutschl@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:53:55 by jmutschl          #+#    #+#             */
-/*   Updated: 2025/08/26 15:26:30 by jmutschl         ###   ########.fr       */
+/*   Updated: 2025/08/29 09:10:07 by jmutschl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <climits>
 
 class Fixed
 {

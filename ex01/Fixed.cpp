@@ -6,7 +6,7 @@
 /*   By: jmutschl <jmutschl@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:53:48 by jmutschl          #+#    #+#             */
-/*   Updated: 2025/08/26 15:25:51 by jmutschl         ###   ########.fr       */
+/*   Updated: 2025/08/29 10:24:17 by jmutschl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,43 @@ Fixed::~Fixed()
 Fixed::Fixed(const int value)
 {
 	std::cout << "Int constructor called\n";
-	this->_fixedPointValue = value << _fractionalBits;
+	const long long	scale = (1 << _fractionalBits);
+	long long temp = static_cast<long long>(value) * scale;
+	if (temp > INT_MAX)
+	{
+		std::cout << "Value is to big to be stored _fixed point number will be adjusted to INT_MAX\n";
+		_fixedPointValue = INT_MAX;
+	}
+	else if (temp < INT_MIN)
+	{
+		std::cout << "Value is to small to be stored _fixed point number will be adjusted to INT_MIN\n";
+		_fixedPointValue = INT_MIN;
+	}
+	else
+		_fixedPointValue = static_cast<int>(temp);
 }
 
 Fixed::Fixed(const float value)
 {
 	std::cout << "Float constructor called\n";
-	this->_fixedPointValue = static_cast<int>(roundf(value * (1 << _fractionalBits)));
+	const float	scale = static_cast<float>(1 << _fractionalBits);
+	long long temp = static_cast<long long>(roundf(value * scale));
+	if (temp > INT_MAX)
+	{
+		std::cout << "Value is to big to be stored _fixed point number will be adjusted to INT_MAX\n";
+		_fixedPointValue = INT_MAX;
+	}
+	else if (temp < INT_MIN)
+	{
+		std::cout << "Value is to small to be stored _fixed point number will be adjusted to INT_MIN\n";
+		_fixedPointValue = INT_MIN;
+	}
+	else
+		_fixedPointValue = static_cast<int>(temp);
 }
 
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called\n";
 	return (this->_fixedPointValue);
 }
 
